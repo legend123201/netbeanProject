@@ -1,29 +1,42 @@
-package Main;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package baitaptrongsach370to372;
 
-import Employee.*;
-import Management.*;
-import WorkWithFile.*;
 import java.util.Scanner;
+import dictionary.TuDien;
 
-public class MainProject {
+/**
+ *
+ * @author legen
+ */
+public class BaiTapTrongSach370to372 {
 
-    private static final Scanner scanner = new Scanner(System.in);
+    static final Scanner scanner = new Scanner(System.in);
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         String luaChon;
-        EmployeeManager manage = new EmployeeManager();
+        TuDien td = new TuDien();
         while (true) {
             Menu();
             luaChon = scanner.nextLine();
             switch (luaChon) {
                 case "1":
-                    manage.Them();
+                    td.ThemTu();
                     break;
                 case "2":
-                   manage.Show();
+                    td.Xuat();
+                    break;
+                case "3":
+                    td.TraTu();
+                    break;
+                case "4":
+                    td.SortTheoTu();
                     break;
                 case "0":
                     System.exit(0);
@@ -37,8 +50,10 @@ public class MainProject {
 
     public static void Menu() {
         System.out.println("-----------menu------------");
-        System.out.println("1. Add employee.");
-        System.out.println("2. Show employee.");
+        System.out.println("1. Them tu.");
+        System.out.println("2. Xuat danh sach tu dien.");
+        System.out.println("3. Tra tu.");
+        System.out.println("4. Sort theo tu.");
         System.out.println("0. exit.");
         System.out.println("---------------------------");
         System.out.print("Please choose: ");

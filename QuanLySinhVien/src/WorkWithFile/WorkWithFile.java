@@ -6,11 +6,11 @@ import Employee.*;
 
 public class WorkWithFile {
 
-    public void write(List<Employee> employeeList) {
+    public void write(ArrayList<Employee> employeeList) {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
-            fos = new FileOutputStream("nhanvien.txt");
+            fos = new FileOutputStream(new File("nhanvien.txt"));
             oos = new ObjectOutputStream(fos);
             oos.writeObject(employeeList);
             oos.close();
@@ -19,14 +19,14 @@ public class WorkWithFile {
         }
     }
 
-    public List<Employee> read() {
-        List<Employee> employeeList = new ArrayList<>();
+    public ArrayList<Employee> read() {
+        ArrayList<Employee> employeeList = new ArrayList<>();
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
-            fis = new FileInputStream("nhanvien.txt");
+            fis = new FileInputStream(new File("nhanvien.txt"));
             ois = new ObjectInputStream(fis);
-            employeeList = (List<Employee>) ois.readObject();
+            employeeList = (ArrayList<Employee>) ois.readObject();
             ois.close();
         } catch (IOException e) {
             e.printStackTrace();
