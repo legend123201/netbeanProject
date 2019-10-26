@@ -5,6 +5,7 @@
  */
 package DSHangHoa;
 
+import WorkWithFile.WorkWithFile;
 import hanghoa.HangDienMay;
 import hanghoa.HangHoa;
 import hanghoa.HangThucPham;
@@ -17,10 +18,16 @@ import java.util.Scanner;
  */
 public class DSHangHoa {
 
-    private ArrayList<HangHoa> dsHangHoa = new ArrayList<>() ;
+    private ArrayList<HangHoa> dsHangHoa = new ArrayList<>();
     private String luaChon1;
     private String luaChon2;
     private static final Scanner scanner = new Scanner(System.in);
+    private WorkWithFile wwf;
+
+    public DSHangHoa() {
+        wwf = new WorkWithFile();
+        this.dsHangHoa = wwf.read();
+    }
 
     public void ExcuteMenu() {
 
@@ -47,6 +54,7 @@ public class DSHangHoa {
                     XuatDS();
                     break;
                 case "0":
+                    wwf.write(dsHangHoa);
                     System.exit(0);
                     break;
                 default:
@@ -66,9 +74,14 @@ public class DSHangHoa {
     }
 
     public void XuatDS() {
-        for(HangHoa i:dsHangHoa){
-            i.Xuat();
+        HangDienMay temp;
+        for (HangHoa i : dsHangHoa) {
+            if (i instanceof HangDienMay) {
+                i.Xuat();
+                temp = (HangDienMay) i;
+                System.out.println(temp.getDtt1().getDtt2().getTada3());
+                
+            }
         }
     }
-
 }

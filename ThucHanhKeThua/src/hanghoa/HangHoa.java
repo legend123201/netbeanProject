@@ -5,13 +5,14 @@
  */
 package hanghoa;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author legen
  */
-public class HangHoa {
+public class HangHoa implements Serializable{
     protected String maHang;
     protected String tenHang;
     protected long donGia;
