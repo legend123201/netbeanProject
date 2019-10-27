@@ -20,7 +20,7 @@ public class GiaoDich {
 
     private Scanner scanner = new Scanner(System.in);
 
-    public void main(int mamay, int mathe, ArrayList<TheATM> ds, ArrayList<MayATM> ds2, QuanLyThe ql) {
+    public void main(int mamay, int mathe, ArrayList<TheATM> ds, ArrayList<MayATM> ds2) {
         String luaChon2;
 
         while (true) {
@@ -37,7 +37,7 @@ public class GiaoDich {
                     truyvan(mathe, ds);
                     break;
                 case "4":
-                    //doima(mathe);
+                    doima(mathe, ds);
                     break;
                 case "5":
                     XemLichSu(mathe, ds);
@@ -83,13 +83,19 @@ public class GiaoDich {
                     phi = 1100;
                 }
                 if (soTien + phi <= i.getSoDu()) {
-                    i.rut(soTien + phi);
+                    if(soTien <= j.getSoDu()){
+                       i.rut(soTien + phi);
+                       j.setSoDu(j.getSoDu()-soTien);
                     System.out.println("Rut thanh cong!");
                     //ghi vao lich su giao dich
                     Date date = java.util.Calendar.getInstance().getTime();
-                    i.themVaoLichSu("Da rut " + String.valueOf(soTien) + " vao " + date.toString());
+                    i.themVaoLichSu("Da rut " + String.valueOf(soTien) + " vao " + date.toString()); 
+                    }
+                    else{
+                        System.out.println("Trong may ATM khong du tien thuc hien giao dich!");
+                    }
                 } else {
-                    System.out.println("Khong du tien thuc hien giao dich!");
+                    System.out.println("Trong tai khoan khong du tien thuc hien giao dich!");
                 }
             }
         }
@@ -153,18 +159,18 @@ public class GiaoDich {
             }
         }
     }
-//    
-//    public void doima(int mathe) {
-//        for (TheATM i : ds) {
-//            if (mathe == i.getMaThe()) {
-//                System.out.println("Nhap ma the moi: ");
-//                int x = Integer.parseInt(scanner.nextLine());
-//                i.setMaPin(x);
-//                System.out.println("Doi thanh cong!");
-//                break;
-//            }
-//        }
-//    }
+
+    public void doima(int mathe, ArrayList<TheATM> ds) {
+        for (TheATM i : ds) {
+            if (mathe == i.getMaThe()) {
+                System.out.println("Nhap ma PIN moi: ");
+                int x = Integer.parseInt(scanner.nextLine());
+                i.setMaPin(x);
+                System.out.println("Doi thanh cong!");
+                break;
+            }
+        }
+    }
 
     public void XemLichSu(int mathe, ArrayList<TheATM> ds) {
         for (TheATM i : ds) {

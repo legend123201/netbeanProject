@@ -69,7 +69,7 @@ public class Kiemtralan2 {
                             System.out.println("Nhap ma PIN: ");
                             maPIN = Integer.parseInt(x.nextLine());
                             if (kiemTra2(maPIN)) {
-                                gd.main(maMay, mathe, ds, ds2, ql);
+                                gd.main(maMay, mathe, ds, ds2);
                                 break;
                             } else {
                                 System.out.println("Sai ma PIN!");
