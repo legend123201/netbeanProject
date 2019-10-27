@@ -6,16 +6,18 @@
 package atm;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import khachhang.KhachHang;
 
 /**
  *
  * @author hocvien
  */
-public class TheATM extends ATM implements Serializable{
+public class TheATM extends ATM{
     private int maThe;
     private int maPin;
     private KhachHang kh;
+    private ArrayList<String> lichSu = new ArrayList<>();
 
     public TheATM(int maThe, int maPin, KhachHang kh, int soDu) {
         this.maThe = maThe;
@@ -23,6 +25,9 @@ public class TheATM extends ATM implements Serializable{
         this.kh = kh;
         this.soDu = soDu;
     
+    }
+
+    public TheATM() {
     }
     
     public void rut(int soTienRut) {    
@@ -35,6 +40,14 @@ public class TheATM extends ATM implements Serializable{
     
     public void nap(int soTienNap) {
         this.soDu = this.soDu + soTienNap;
+    }
+    
+    public void themVaoLichSu(String s){
+        this.lichSu.add(s);
+    }
+
+    public ArrayList<String> getLichSu() {
+        return lichSu;
     }
     
     public int getMaThe() {

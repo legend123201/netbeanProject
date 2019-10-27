@@ -5,7 +5,7 @@
  */
 package workwithfile;
 
-import atm.MayATM;
+import atm.ATM;
 import atm.TheATM;
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,63 +20,33 @@ import java.util.ArrayList;
  * @author legen
  */
 public class WorkWithFile {
-    public void writeMayATM(ArrayList<MayATM> MayATMList) {
+    public void writeATM(ArrayList<ATM> ATMList) {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
-            fos = new FileOutputStream(new File("mayatm.txt"));
+            fos = new FileOutputStream(new File("atm.txt"));
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(MayATMList);
+            oos.writeObject(ATMList);
             oos.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
-    public ArrayList<MayATM> readMayATM() {
-        ArrayList<MayATM> MayATMList = new ArrayList<>();
+    public ArrayList<ATM> readATM() {
+        ArrayList<ATM> ATMList = new ArrayList<>();
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
-            fis = new FileInputStream(new File("mayatm.txt"));
+            fis = new FileInputStream(new File("atm.txt"));
             ois = new ObjectInputStream(fis);
-            MayATMList = (ArrayList<MayATM>) ois.readObject();
+            ATMList = (ArrayList<ATM>) ois.readObject();
             ois.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch(ClassNotFoundException e)  {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        return MayATMList;
-    }
-    
-    public void writeTheATM(ArrayList<TheATM> TheATMList) {
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-        try {
-            fos = new FileOutputStream(new File("theatm.txt"));
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(TheATMList);
-            oos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public ArrayList<TheATM> readTheATM() {
-        ArrayList<TheATM> TheATMList = new ArrayList<>();
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-        try {
-            fis = new FileInputStream(new File("theatm.txt"));
-            ois = new ObjectInputStream(fis);
-            TheATMList = (ArrayList<TheATM>) ois.readObject();
-            ois.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch(ClassNotFoundException e)  {
-            e.printStackTrace();
-        }
-        return TheATMList;
+        return ATMList;
     }
 }

@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author hocvien
  */
-public abstract class ATM{
+public class ATM implements Serializable{
     protected enum nganHang {
         Agribank,
         Sacombank,
@@ -21,9 +21,10 @@ public abstract class ATM{
     }
     protected nganHang loaiNganHang;
     protected int soDu;
-    Scanner scanner = new Scanner(System.in);
+    
     
     public void ChonNganHang() {
+        Scanner scanner = new Scanner(System.in);
         String luaChon;
         while (true) {
             Menu1();

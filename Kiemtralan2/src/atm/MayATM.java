@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author hocvien
  */
-public class MayATM extends ATM implements Serializable{
+public class MayATM extends ATM{
 
     private int maMay;
     private String diaChi;
@@ -22,6 +22,11 @@ public class MayATM extends ATM implements Serializable{
         this.soDu = soDu;
     }
 
+    public MayATM() {
+    }
+
+    
+    
     public int getMaMay() {
         return maMay;
     }

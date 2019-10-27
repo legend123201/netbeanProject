@@ -6,6 +6,7 @@
 package kiemtralan2;
 
 import Excute.QuanLyThe;
+import atm.ATM;
 import atm.MayATM;
 import atm.TheATM;
 import giaodich.GiaoDich;
@@ -23,6 +24,7 @@ public class Kiemtralan2 {
     private static final GiaoDich gd = new GiaoDich();
     public static ArrayList<TheATM> ds = new ArrayList<>();
     public static ArrayList<MayATM> ds2 = new ArrayList<>();
+    public static ArrayList<ATM> ds3 = new ArrayList<>();
     private static WorkWithFile wwf = new WorkWithFile();
 
     /**
@@ -31,8 +33,20 @@ public class Kiemtralan2 {
     public static void main(String[] args) {
         Scanner x = new Scanner(System.in);
 
-        ds = wwf.readTheATM();
-        ds2 = wwf.readMayATM();
+        ds3 = wwf.readATM();
+        for (ATM i : ds3) {
+            if (i instanceof TheATM) {
+                TheATM temp = new TheATM();
+                temp = (TheATM) i;
+                ds.add(temp);
+            } else {
+                MayATM temp = new MayATM();
+                temp = (MayATM) i;
+                ds2.add(temp);
+            }
+        }
+        ds3.clear();
+        
         String luaChon;
         while (true) {
             Menu();
@@ -55,7 +69,7 @@ public class Kiemtralan2 {
                             System.out.println("Nhap ma PIN: ");
                             maPIN = Integer.parseInt(x.nextLine());
                             if (kiemTra2(maPIN)) {
-                                gd.main(maMay, mathe, ds, ds2);
+                                gd.main(maMay, mathe, ds, ds2, ql);
                                 break;
                             } else {
                                 System.out.println("Sai ma PIN!");
@@ -68,8 +82,9 @@ public class Kiemtralan2 {
                     }
                     break;
                 case "0":
-                    wwf.writeMayATM(ds2);
-                    wwf.writeTheATM(ds);
+                    ds3.addAll(ds);
+                    ds3.addAll(ds2);
+                    wwf.writeATM(ds3);
                     return;
                 default:
                     System.out.println("invalid! please choose action in below menu:");
