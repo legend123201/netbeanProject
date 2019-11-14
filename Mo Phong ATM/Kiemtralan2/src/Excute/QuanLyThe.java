@@ -13,6 +13,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 import khachhang.KhachHang;
+import static kiemtralan2.Kiemtralan2.ds;
+import static kiemtralan2.Kiemtralan2.ds2;
 import workwithfile.WorkWithFile;
 
 /**
@@ -51,51 +53,12 @@ public class QuanLyThe {
         }
     }
 
-//    public void main2(int mathe) {
-//        String luaChon2;
-//
-//        while (true) {
-//            Menu2(mathe);
-//            luaChon2 = scanner.nextLine();
-//            switch (luaChon2) {
-//                case "1":
-//                    rut(mathe);
-//                    break;
-//                case "2":
-//
-//                    break;
-//                case "3":
-//                    truyvan(mathe);
-//                    break;
-//                case "4":
-//                    doima(mathe);
-//                    break;
-//                case "0":
-//                    System.exit(0);
-//                    break;
-//                default:
-//                    System.out.println("invalid! please choose action in below menu:");
-//                    break;
-//            }
-//        }
-//    }
     public void Menu1() {
         System.out.println("-----------menu------------");
         System.out.println("1. Them tai khoan.");
         System.out.println("2. Them may ATM.");
         System.out.println("3. Xuat danh sach the.");
         System.out.println("4. Xuat danh sach may.");
-        System.out.println("0. exit.");
-        System.out.println("---------------------------");
-        System.out.print("Please choose: ");
-    }
-
-    public void Menu2(int mathe) {
-        System.out.println("-----------menu------------");
-        System.out.println("1. Rut tien.");
-        System.out.println("2. Chuyen tien.");
-        System.out.println("3. Truy van so du.");
-        System.out.println("4. Doi ma PIN.");
         System.out.println("0. exit.");
         System.out.println("---------------------------");
         System.out.print("Please choose: ");
@@ -114,8 +77,13 @@ public class QuanLyThe {
         diaChi = scanner.nextLine();
         System.out.println("Nhap so dien thoai: ");
         soDT = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhap ma the: ");
-        maThe = Integer.parseInt(scanner.nextLine());
+        do {
+            System.out.println("Nhap ma the: ");
+            maThe = Integer.parseInt(scanner.nextLine());
+            if(kiemTra(maThe)){
+                System.out.println("Da ton tai ma the nay! Moi nhap lai!"); 
+            }
+        } while (kiemTra(maThe));
         System.out.println("Nhap so du: ");
         soDu = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhap ma PIN: ");
@@ -129,8 +97,13 @@ public class QuanLyThe {
     public void ThemMay(ArrayList<MayATM> ds2) {
         String diaChi;
         int maMay, soDu;
-        System.out.println("Nhap ma may: ");
-        maMay = Integer.parseInt(scanner.nextLine());
+        do {
+            System.out.println("Nhap ma may: ");
+            maMay = Integer.parseInt(scanner.nextLine());
+            if(kiemTra2(maMay)){
+                System.out.println("Da ton tai ma may nay! Moi nhap lai!"); 
+            }
+        } while (kiemTra2(maMay));
         System.out.println("Nhap dia chi: ");
         diaChi = scanner.nextLine();
         System.out.println("Nhap so du: ");
@@ -140,18 +113,7 @@ public class QuanLyThe {
         ds2.add(may);
     }
 
-//    public void xoataikhoan() {
-//        int mathe;
-//        System.out.println("Nhap ma the muon xoa: ");
-//        mathe = Integer.parseInt(scanner.nextLine());
-//        for (TheATM i : ds) {
-//            if (i.getMaThe() == mathe) {
-//                ds.remove(i);
-//                break;
-//            }
-//        }
-//    }
-//
+
     public void xuatDsThe(ArrayList<TheATM> ds) {
         for (TheATM i : ds) {
             System.out.println("|||||||||||||||||||");
@@ -167,13 +129,15 @@ public class QuanLyThe {
             System.out.println(i.getKh().getSoDienThoai());
             System.out.print("Ma the: ");
             System.out.println(i.getMaThe());
+            System.out.print("Ma PIN: ");
+            System.out.println(i.getMaPin());
             System.out.print("Ten ngan hang: ");
             System.out.println(i.getTenNganHang());
             System.out.print("So du: ");
             System.out.println(i.getSoDu());
         }
     }
-    
+
     public void xuatDsMay(ArrayList<MayATM> ds2) {
         for (MayATM i : ds2) {
             System.out.println("|||||||||||||||||||");
@@ -187,53 +151,22 @@ public class QuanLyThe {
             System.out.println(i.getSoDu());
         }
     }
-//
-//    public void rut(int mathe) {
-//        int soTien;
-//        System.out.println("Nhap so tien rut: ");
-//        soTien = Integer.parseInt(scanner.nextLine());
-//        for (TheATM i : ds) {
-//            if (mathe == i.getMaThe()) {
-//                if (soTien < i.getSoDu()) {
-//                    i.rut(soTien);
-//                    break;
-//                } else {
-//                    System.out.println("Khong du tien!");
-//                    break;
-//                }
-//            }
-//        }
-//    }
-//
-//    public void truyvan(int mathe) {
-//        for (TheATM i : ds) {
-//            if (mathe == i.getMaThe()) {
-//                System.out.println("So tien con lai la: ");
-//                System.out.println(i.getSoDu());
-//                break;
-//            }
-//        }
-//    }
-//
-//    public void doima(int mathe) {
-//        for (TheATM i : ds) {
-//            if (mathe == i.getMaThe()) {
-//                System.out.println("Nhap ma the moi: ");
-//                int x = Integer.parseInt(scanner.nextLine());
-//                i.setMaPin(x);
-//                System.out.println("Doi thanh cong!");
-//                break;
-//            }
-//        }
-//    }
-//
-//    public void Sort() {
-//
-//        Collections.sort(ds, new Comparator<TheATM>() {
-//            @Override
-//            public int compare(TheATM t1, TheATM t2) {
-//                return t1.getKh().getTen().compareTo(t2.getKh().getTen());
-//            }
-//        });
-//    }
+
+    public static boolean kiemTra(int x) {
+        for (TheATM i : ds) {
+            if (x == i.getMaThe()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static boolean kiemTra2(int x) {
+        for (MayATM i : ds2) {
+            if (x == i.getMaMay()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

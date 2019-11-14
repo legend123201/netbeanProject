@@ -6,11 +6,13 @@
 package giaodich;
 
 import Excute.QuanLyThe;
+import static Excute.QuanLyThe.kiemTra;
 import atm.MayATM;
 import atm.TheATM;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import static kiemtralan2.Kiemtralan2.ds;
 
 /**
  *
@@ -83,15 +85,14 @@ public class GiaoDich {
                     phi = 1100;
                 }
                 if (soTien + phi <= i.getSoDu()) {
-                    if(soTien <= j.getSoDu()){
-                       i.rut(soTien + phi);
-                       j.setSoDu(j.getSoDu()-soTien);
-                    System.out.println("Rut thanh cong!");
-                    //ghi vao lich su giao dich
-                    Date date = java.util.Calendar.getInstance().getTime();
-                    i.themVaoLichSu("Da rut " + String.valueOf(soTien) + " vao " + date.toString()); 
-                    }
-                    else{
+                    if (soTien <= j.getSoDu()) {
+                        i.rut(soTien + phi);
+                        j.setSoDu(j.getSoDu() - soTien);
+                        System.out.println("Rut thanh cong!");
+                        //ghi vao lich su giao dich
+                        Date date = java.util.Calendar.getInstance().getTime();
+                        i.themVaoLichSu("Da rut " + String.valueOf(soTien) + " vao " + date.toString());
+                    } else {
                         System.out.println("Trong may ATM khong du tien thuc hien giao dich!");
                     }
                 } else {
@@ -128,8 +129,13 @@ public class GiaoDich {
             if (mathe1 == i.getMaThe()) {
                 if (i.getTenNganHang() == j.getTenNganHang()) {
                     phi = 1100;
+
                     System.out.println("Nhap so tai khoan can chuyen: ");
                     mathe2 = Integer.parseInt(scanner.nextLine());
+                    if (!kiemTra(mathe2)) {
+                        System.out.println("Khong ton tai ma tai khoan nay!");
+                        return;
+                    }
                     for (TheATM k : ds1) {
                         if (mathe2 == k.getMaThe()) {
                             System.out.println("Nhap so tien can chuyen: ");
@@ -142,21 +148,20 @@ public class GiaoDich {
                                 //ghi vao lich su giao dich
                                 Date date = java.util.Calendar.getInstance().getTime();
                                 i.themVaoLichSu("Da chuyen " + String.valueOf(soTien) + " cho tai khoan " + String.valueOf(k.getMaThe()) + " vao " + date.toString());
-                                k.themVaoLichSu("Da nhan " + String.valueOf(soTien) + " tu tai khoan " + String.valueOf(k.getMaThe()) + " vao " + date.toString());
+                                k.themVaoLichSu("Da nhan " + String.valueOf(soTien) + " tu tai khoan " + String.valueOf(i.getMaThe()) + " vao " + date.toString());
                                 break;
                             } else {
                                 System.out.println("So tien con lai khong du!");
                                 break;
                             }
-
-                        } else {
-                            System.out.println("Khong tim thay so tai khoan nay!");
-                            break;
                         }
+
                     }
+
                 }
                 break;
             }
+
         }
     }
 
@@ -182,5 +187,14 @@ public class GiaoDich {
                 break;
             }
         }
+    }
+
+    public static boolean kiemTra(int x) {
+        for (TheATM i : ds) {
+            if (x == i.getMaThe()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

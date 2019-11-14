@@ -61,6 +61,10 @@ public class Kiemtralan2 {
                      maPIN;
                     System.out.println("Nhap ma may: ");
                     maMay = Integer.parseInt(x.nextLine());
+                    if(!kiemTra3(maMay)){
+                        System.out.println("May khong ton tai!");
+                        break;
+                    }
                     while (true) {
 
                         System.out.println("Nhap ma the: ");
@@ -111,10 +115,19 @@ public class Kiemtralan2 {
         }
         return false;
     }
+    
+    public static boolean kiemTra3(int x) {
+        for (MayATM i : ds2) {
+            if (x == i.getMaMay()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void Menu() {
         System.out.println("-----------menu------------");
-        System.out.println("1. Quan ly the.");
+        System.out.println("1. Quan ly.");
         System.out.println("2. Dang nhap khach hang.");
         System.out.println("0. exit.");
         System.out.println("---------------------------");
