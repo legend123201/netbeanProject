@@ -21,7 +21,7 @@ public class MayATM extends ATM{
         this.diaChi = diaChi;
         this.soDu = soDu;
     }
-
+    
     public MayATM() {
     }
 
