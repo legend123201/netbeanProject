@@ -141,6 +141,7 @@ public class Sach implements Serializable{
             return this.value;
         }
         
+        //tao constructor va get tu dong, no cung ko cho set value san luon
         private ChuyenNganh(String value) {
             this.value = value;
         }
