@@ -1,5 +1,0 @@
-Nguyen Van Nhuong|711A20072175|abc123|9900.0
-Le Duc Anh|711A20072176|abc124|200000.0
-Nguyen Dinh Nghia|711A20072177|abc125|300000.0
-Nguyen Duc Tam|711A20072178|abc126|400000.0
-Toi La Toi|a|b|800.0
