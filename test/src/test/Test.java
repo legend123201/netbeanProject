@@ -21,41 +21,58 @@ public class Test {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<classa> ds = new ArrayList<>();
-        classa t1 = new classa(3, 6);
-        classa t2 = new classa(4, 8);
-        classa t3 = new classa(5, 10);
-        ds.add(t1);
-        ds.add(t2);
-        ds.add(t3);
-        HashMap<Integer, classa> ds2 = new HashMap<>();
-        ds2.put(t3.getId(), t3);
-        System.out.println("Nhap id: ");
-        int a1 = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhap so luong muon lay: ");
-        int a2 = Integer.parseInt(scanner.nextLine());
-        for (classa t : ds) {
-            if (a1 == t.getId()) {
-                if (ds2.containsKey(a1)) {
-                    
-                    ds2.get(a1).setSoluong(ds2.get(a1).getSoluong()+a2);
-                } else {
-                    ds2.put(a1, t);
-                    ds2.get(a1).setSoluong(a2);
-                }
+//        Scanner scanner = new Scanner(System.in);
+//        ArrayList<classa> ds = new ArrayList<>();
+//        classa t1 = new classa(3, 6);
+//        classa t2 = new classa(4, 8);
+//        classa t3 = new classa(5, 10);
+//        ds.add(t1);
+//        ds.add(t2);
+//        ds.add(t3);
+//        HashMap<Integer, classa> ds2 = new HashMap<>();
+//        ds2.put(t3.getId(), t3);
+//        System.out.println("Nhap id: ");
+//        int a1 = Integer.parseInt(scanner.nextLine());
+//        System.out.println("Nhap so luong muon lay: ");
+//        int a2 = Integer.parseInt(scanner.nextLine());
+//        for (classa t : ds) {
+//            if (a1 == t.getId()) {
+//                if (ds2.containsKey(a1)) {
+//                    
+//                    ds2.get(a1).setSoluong(ds2.get(a1).getSoluong()+a2);
+//                } else {
+//                    ds2.put(a1, t);
+//                    ds2.get(a1).setSoluong(a2);
+//                }
+//            }
+//        }
+//        System.out.println("-------");
+//        ds.forEach(t -> {
+//            System.out.println(t.getId());
+//            System.out.println(t.getSoluong());
+//        });
+//        System.out.println("--------");
+//        ds2.forEach((k, v) -> {
+//            System.out.println(k);
+//            System.out.println(v.getSoluong());
+//        });
+
+        boolean[] netLien = {true, true, true, true, true, true, true, true}; //8 phan tu
+        boolean[] netDut = {true, true, true, false, true, true, true, false};//8 phan tu
+        boolean[] netChamGach = {true, true, false, true, false}; //5 phan tu
+        boolean[] net2ChamGach = {true, true, true, false, true, false, true, false};//8 phan tu
+        boolean[] temp = new boolean[8];
+        temp = net2ChamGach;
+        for (int i = 0; i < 8; i++) {
+            if (temp[i]) {
+                System.out.println("true");
+
+            } else {
+                System.out.println("false");
+
             }
         }
-        System.out.println("-------");
-        ds.forEach(t -> {
-            System.out.println(t.getId());
-            System.out.println(t.getSoluong());
-        });
-        System.out.println("--------");
-        ds2.forEach((k, v) -> {
-            System.out.println(k);
-            System.out.println(v.getSoluong());
-        });
+
     }
 
 }
