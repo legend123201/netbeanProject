@@ -578,7 +578,7 @@ public class NewJFrame extends javax.swing.JFrame implements Runnable {
 
         @Override
         protected void paintComponent(Graphics grphcs) {
-
+            
         }
 
     }
