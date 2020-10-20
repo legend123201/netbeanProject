@@ -48,4 +48,5 @@ public class server_Tong2So_TCP {
         dos.writeInt(tong);
         server.close();
     }
+    
 }

@@ -47,21 +47,25 @@ public class JavaApplication1 {
 //        }
         while (true) {
             int a = 0;
-            try {    
+            try {
                 Scanner scanner = new Scanner(System.in);
                 a = Integer.parseInt(scanner.nextLine());
-                System.out.println("a la so nguyen");       
+                System.out.println("a la so nguyen");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
-                if(a == 1){
+                if (a == 1) {
                     break;
                 }
                 continue;
 
             }
         }
+        System.out.println(test(3,3));
+    }
 
+    public static int test(int a, int b) {
+        return a+b;
     }
 
 }
